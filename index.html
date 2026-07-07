@@ -28,7 +28,8 @@
     .screen{position:fixed;inset:0;display:none;background:#000;align-items:center;justify-content:center;overflow:hidden}
     .screen.active{display:flex}
     .screen::before{content:"";position:absolute;inset:-24px;background:var(--bg-img) center/cover no-repeat;filter:blur(18px);transform:scale(1.08);opacity:.55}
-    .stage{position:relative;z-index:1;height:100%;max-height:100svh;aspect-ratio:941/1672;max-width:100vw}.art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none;z-index:1}
+    .stage{position:relative;z-index:1;height:100%;max-height:100svh;aspect-ratio:941/1672;max-width:100vw}
+    .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none;z-index:1}
     #opening{cursor:pointer;--bg-img:url('assets/opening.webp')}
     #mainScreen{--bg-img:url('assets/principal.webp')}
     #giftScreen{--bg-img:url('assets/presentes.webp')}
@@ -37,8 +38,17 @@
     .hotspot{position:absolute;border:0;background:transparent;cursor:pointer;z-index:5}
     .back{position:absolute;top:calc(env(safe-area-inset-top) + 14px);left:14px;z-index:10;border:0;border-radius:999px;padding:10px 14px;background:rgba(255,255,255,.76);color:#6b3a21;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.22)}
     .skip{position:absolute;top:calc(env(safe-area-inset-top) + 14px);right:14px;z-index:10;border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:10px 16px;background:rgba(255,255,255,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.45);box-shadow:0 4px 14px rgba(0,0,0,.18)}
-    body.debug .hotspot{background:rgba(255,0,0,.22);outline:2px solid rgba(255,0,0,.65)}
-    .loading{position:absolute;bottom:28px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 2px 8px #000;font-size:14px;opacity:.85}.tap-btn{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:6;border:1px solid rgba(255,255,255,.72);border-radius:999px;padding:12px 22px;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-shadow:0 1px 5px rgba(0,0,0,.55);box-shadow:0 8px 22px rgba(0,0,0,.20);animation:pulse 1.8s ease-in-out infinite}.fade-out{animation:fadeOut .75s ease forwards}.fade-in{animation:fadeIn .75s ease forwards}@keyframes pulse{0%,100%{transform:translateX(-50%) scale(1);opacity:.88}50%{transform:translateX(-50%) scale(1.035);opacity:1}}@keyframes fadeOut{to{opacity:0;filter:blur(8px)}}@keyframes fadeIn{from{opacity:0;filter:blur(8px)}to{opacity:1;filter:blur(0)}}
+    .loading{position:absolute;bottom:28px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 2px 8px #000;font-size:14px;opacity:.85}
+    .tap-btn{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:6;border:1px solid rgba(255,255,255,.72);border-radius:999px;padding:12px 22px;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-shadow:0 1px 5px rgba(0,0,0,.55);box-shadow:0 8px 22px rgba(0,0,0,.20);animation:pulse 1.8s ease-in-out infinite}
+    .fade-out{animation:fadeOut .75s ease forwards}.fade-in{animation:fadeIn .75s ease forwards}
+    @keyframes pulse{0%,100%{transform:translateX(-50%) scale(1);opacity:.88}50%{transform:translateX(-50%) scale(1.035);opacity:1}}
+    @keyframes fadeOut{to{opacity:0;filter:blur(8px)}}@keyframes fadeIn{from{opacity:0;filter:blur(8px)}to{opacity:1;filter:blur(0)}}
+    body.editor-on .hotspot{background:rgba(255,70,120,.22);outline:2px solid rgba(255,255,255,.9);border-radius:10px}
+    body.editor-on .hotspot::after{content:attr(data-label);position:absolute;left:6px;top:6px;background:#fff;color:#7b3650;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:800;box-shadow:0 2px 8px #0004;white-space:nowrap}
+    body.editor-on .hotspot.selected{background:rgba(50,180,255,.28);outline:3px solid #fff}
+    body.editor-on .hotspot .resize{position:absolute;right:-7px;bottom:-7px;width:18px;height:18px;background:#fff;border:2px solid #7b3650;border-radius:50%;box-shadow:0 2px 8px #0006}
+    .editor-panel{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:560px;margin:auto;background:rgba(255,255,255,.94);color:#4b2634;border-radius:18px;padding:12px;box-shadow:0 12px 34px #0006;font-size:13px}
+    body.editor-on .editor-panel{display:block}.editor-panel b{font-size:14px}.editor-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}.editor-panel button,.editor-panel select,.editor-panel input{border:1px solid #d5a8b7;border-radius:10px;padding:8px;background:#fff;color:#4b2634;font-weight:700}.editor-panel input{width:74px}.editor-panel textarea{width:100%;height:78px;margin-top:8px;border:1px solid #d5a8b7;border-radius:10px;padding:8px;font-size:12px}.editor-mini{opacity:.75;font-size:12px;margin-top:6px}.edit-open{display:none;position:fixed;right:12px;bottom:12px;z-index:45;border:0;border-radius:999px;padding:10px 13px;background:rgba(255,255,255,.88);color:#6b3a21;font-weight:800;box-shadow:0 4px 16px #0004}body.can-edit .edit-open{display:block}body.editor-on .edit-open{display:none}
   </style>
 </head>
 <body>
@@ -51,28 +61,44 @@
     </section>
 
     <section id="videoScreen" class="screen" aria-label="Vídeo do convite">
-      <div class="stage">
-        <video id="videoPlayer" src="assets/video.mp4" preload="metadata" playsinline webkit-playsinline></video>
-      </div>
+      <div class="stage"><video id="videoPlayer" src="assets/video.mp4" preload="metadata" playsinline webkit-playsinline></video></div>
       <button class="skip" id="skipBtn" type="button">Pular vídeo</button>
     </section>
 
     <section id="mainScreen" class="screen" aria-label="Convite principal">
-      <div class="stage">
+      <div class="stage" id="mainStage">
         <img class="art" src="assets/principal.webp" alt="Convite Clarinha" loading="eager" width="941" height="1672">
-        <button class="hotspot" id="confirmBtn" aria-label="Confirmar presença" style="left:17%;top:66.5%;width:23%;height:12.5%"></button>
-        <button class="hotspot" id="mapBtn" aria-label="Abrir localização" style="left:39%;top:66.5%;width:22%;height:12.5%"></button>
-        <button class="hotspot" id="giftBtn" aria-label="Ver sugestões de presentes" style="left:60%;top:66.5%;width:25%;height:12.5%"></button>
+        <button class="hotspot" id="confirmBtn" data-key="confirm" data-label="WhatsApp" aria-label="Confirmar presença"></button>
+        <button class="hotspot" id="mapBtn" data-key="map" data-label="Localização" aria-label="Abrir localização"></button>
+        <button class="hotspot" id="giftBtn" data-key="gift" data-label="Presentes" aria-label="Ver sugestões de presentes"></button>
       </div>
     </section>
 
     <section id="giftScreen" class="screen" aria-label="Sugestões de presentes">
-      <div class="stage">
-        <img class="art" src="assets/presentes.webp" alt="Sugestões de presentes" loading="lazy" width="941" height="1672">
-      </div>
+      <div class="stage"><img class="art" src="assets/presentes.webp" alt="Sugestões de presentes" loading="lazy" width="941" height="1672"></div>
       <button class="back" id="backBtn">Voltar</button>
     </section>
   </main>
+
+  <button class="edit-open" id="editOpen" type="button">Editar áreas</button>
+  <div class="editor-panel" id="editorPanel">
+    <b>Editor de áreas de clique</b>
+    <div class="editor-mini">Arraste a área no convite. Puxe a bolinha no canto para aumentar/diminuir. Use <b>?editor=1</b> no link para abrir este editor.</div>
+    <div class="editor-row">
+      <select id="areaSelect"><option value="confirm">WhatsApp</option><option value="map">Localização</option><option value="gift">Presentes</option></select>
+      <label>L <input id="inpL" type="number" step="0.1"></label>
+      <label>T <input id="inpT" type="number" step="0.1"></label>
+      <label>W <input id="inpW" type="number" step="0.1"></label>
+      <label>H <input id="inpH" type="number" step="0.1"></label>
+    </div>
+    <div class="editor-row">
+      <button id="saveAreas" type="button">Salvar neste navegador</button>
+      <button id="resetAreas" type="button">Resetar</button>
+      <button id="copyAreas" type="button">Copiar código</button>
+      <button id="closeEditor" type="button">Fechar</button>
+    </div>
+    <textarea id="exportBox" readonly placeholder="Aqui aparece o código para colar no index.html e deixar permanente."></textarea>
+  </div>
 
   <audio id="music" src="assets/musica.mp3" preload="auto" loop></audio>
 
@@ -81,63 +107,86 @@
     const MAPS = 'https://www.google.com/maps/place/R.+Gen.+Edgar+Monteiro+Sampaio,+600+-+Catagu%C3%A1,+Taubat%C3%A9+-+SP,+12093-460/@-23.0763504,-45.5629059,15.25z/data=!4m15!1m8!3m7!1s0x94ccfedf80e2986d:0x10c22bb4c86223e9!2sR.+Gen.+Edgar+Monteiro+Sampaio,+600+-+Catagu%C3%A1,+Taubat%C3%A9+-+SP,+12093-460!3b1!8m2!3d-23.0764533!4d-45.5627939!16s%2Fg%2F11vjpyms8z!3m5!1s0x94ccfedf80e2986d:0x10c22bb4c86223e9!8m2!3d-23.0764533!4d-45.5627939!16s%2Fg%2F11vjpyms8z?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D';
     const MESSAGE = 'Olá! Confirmo minha presença no aniversário da Clarinha.';
 
+    const DEFAULT_HOTSPOTS = {
+      confirm:{left:17, top:66.5, width:23, height:12.5},
+      map:{left:39, top:66.5, width:22, height:12.5},
+      gift:{left:60, top:66.5, width:25, height:12.5}
+    };
+    const STORAGE_KEY = 'clarinha-hotspots-v1';
+    let HOTSPOTS = JSON.parse(JSON.stringify(DEFAULT_HOTSPOTS));
+    try { HOTSPOTS = {...HOTSPOTS, ...JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}; } catch(e) {}
+
     const $ = (id)=>document.getElementById(id);
     const screens = ['opening','videoScreen','mainScreen','giftScreen'].map($);
     const video = $('videoPlayer');
     const music = $('music');
+    const buttons = {confirm:$('confirmBtn'), map:$('mapBtn'), gift:$('giftBtn')};
 
-    if (new URLSearchParams(location.search).has('debug')) document.body.classList.add('debug');
+    function applyHotspots(){
+      Object.entries(HOTSPOTS).forEach(([key,v])=>{
+        const el = buttons[key]; if(!el) return;
+        el.style.left = v.left + '%'; el.style.top = v.top + '%'; el.style.width = v.width + '%'; el.style.height = v.height + '%';
+      });
+      exportAreas();
+    }
+    applyHotspots();
 
     function show(id){
       screens.forEach(s=>{s.classList.remove('active','fade-in','fade-out')});
-      const next = $(id);
-      next.classList.add('active');
+      const next = $(id); next.classList.add('active');
       if(id === 'mainScreen') next.classList.add('fade-in');
     }
 
     function startMusic(){
       music.volume = 0;
-      const playPromise = music.play();
-      if (playPromise && playPromise.catch) playPromise.catch(()=>{});
-      let v = 0;
-      const fade = setInterval(()=>{
-        v = Math.min(0.30, v + 0.03);
-        music.volume = v;
-        if (v >= 0.30) clearInterval(fade);
-      }, 120);
+      const playPromise = music.play(); if (playPromise && playPromise.catch) playPromise.catch(()=>{});
+      let v = 0; const fade = setInterval(()=>{ v = Math.min(0.30, v + 0.03); music.volume = v; if (v >= 0.30) clearInterval(fade); }, 120);
     }
 
-    $('opening').addEventListener('click', async ()=>{
-      show('videoScreen');
-      startMusic();
-      video.volume = 1;
-      try { await video.play(); } catch(e) { show('mainScreen'); }
-    }, {once:true});
+    $('opening').addEventListener('click', async ()=>{ show('videoScreen'); startMusic(); video.volume = 1; try { await video.play(); } catch(e) { show('mainScreen'); } }, {once:true});
+    function goMain(){ if ($('mainScreen').classList.contains('active')) return; video.pause(); $('videoScreen').classList.add('fade-out'); setTimeout(()=>show('mainScreen'), 520); }
+    video.addEventListener('ended', goMain); video.addEventListener('error', goMain); $('skipBtn').addEventListener('click', goMain);
 
-    function goMain(){
-      if ($('mainScreen').classList.contains('active')) return;
-      video.pause();
-      $('videoScreen').classList.add('fade-out');
-      setTimeout(()=>show('mainScreen'), 520);
-    }
-
-    video.addEventListener('ended', goMain);
-    video.addEventListener('error', goMain);
-    $('skipBtn').addEventListener('click', goMain);
-
-    $('confirmBtn').addEventListener('click', (e)=>{
-      e.preventDefault(); e.stopPropagation();
-      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MESSAGE)}`, '_blank');
-    });
-    $('mapBtn').addEventListener('click', (e)=>{
-      e.preventDefault(); e.stopPropagation();
-      window.open(MAPS, '_blank');
-    });
-    $('giftBtn').addEventListener('click', (e)=>{
-      e.preventDefault(); e.stopPropagation();
-      show('giftScreen');
-    });
+    $('confirmBtn').addEventListener('click', (e)=>{ if(document.body.classList.contains('editor-on')) return; e.preventDefault(); e.stopPropagation(); window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MESSAGE)}`, '_blank'); });
+    $('mapBtn').addEventListener('click', (e)=>{ if(document.body.classList.contains('editor-on')) return; e.preventDefault(); e.stopPropagation(); window.open(MAPS, '_blank'); });
+    $('giftBtn').addEventListener('click', (e)=>{ if(document.body.classList.contains('editor-on')) return; e.preventDefault(); e.stopPropagation(); show('giftScreen'); });
     $('backBtn').addEventListener('click', ()=> show('mainScreen'));
+
+    // EDITOR: abra com ?editor=1
+    const params = new URLSearchParams(location.search);
+    if(params.has('editor')){ document.body.classList.add('can-edit'); $('editOpen').click(); }
+    let selected = 'confirm';
+    function openEditor(){ show('mainScreen'); document.body.classList.add('editor-on','can-edit'); selectArea(selected); }
+    function closeEditor(){ document.body.classList.remove('editor-on'); }
+    $('editOpen').addEventListener('click', openEditor); $('closeEditor').addEventListener('click', closeEditor);
+    $('areaSelect').addEventListener('change', e=>selectArea(e.target.value));
+    function selectArea(key){ selected = key; $('areaSelect').value = key; Object.values(buttons).forEach(b=>b.classList.remove('selected')); buttons[key].classList.add('selected'); fillInputs(); }
+    function fillInputs(){ const v=HOTSPOTS[selected]; $('inpL').value=v.left; $('inpT').value=v.top; $('inpW').value=v.width; $('inpH').value=v.height; }
+    ['inpL','inpT','inpW','inpH'].forEach(id=>$(id).addEventListener('input',()=>{HOTSPOTS[selected]={left:+$('inpL').value,top:+$('inpT').value,width:+$('inpW').value,height:+$('inpH').value}; applyHotspots();}));
+    Object.entries(buttons).forEach(([key,el])=>{
+      el.innerHTML = '<span class="resize"></span>';
+      el.addEventListener('pointerdown', e=>{
+        if(!document.body.classList.contains('editor-on')) return;
+        e.preventDefault(); e.stopPropagation(); selectArea(key);
+        const stage = $('mainStage').getBoundingClientRect();
+        const start = {x:e.clientX,y:e.clientY, ...HOTSPOTS[key]};
+        const resize = e.target.classList.contains('resize');
+        el.setPointerCapture(e.pointerId);
+        function move(ev){
+          const dx = (ev.clientX-start.x)/stage.width*100;
+          const dy = (ev.clientY-start.y)/stage.height*100;
+          if(resize){ HOTSPOTS[key].width = Math.max(3, Math.min(100-HOTSPOTS[key].left, start.width+dx)); HOTSPOTS[key].height = Math.max(3, Math.min(100-HOTSPOTS[key].top, start.height+dy)); }
+          else { HOTSPOTS[key].left = Math.max(0, Math.min(100-start.width, start.left+dx)); HOTSPOTS[key].top = Math.max(0, Math.min(100-start.height, start.top+dy)); }
+          applyHotspots(); fillInputs();
+        }
+        function up(){ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); }
+        el.addEventListener('pointermove',move); el.addEventListener('pointerup',up);
+      });
+    });
+    $('saveAreas').addEventListener('click',()=>{ localStorage.setItem(STORAGE_KEY, JSON.stringify(HOTSPOTS)); alert('Áreas salvas neste navegador. Para deixar permanente no GitHub, copie o código e cole no index.html.'); });
+    $('resetAreas').addEventListener('click',()=>{ HOTSPOTS=JSON.parse(JSON.stringify(DEFAULT_HOTSPOTS)); localStorage.removeItem(STORAGE_KEY); applyHotspots(); fillInputs(); });
+    function exportAreas(){ $('exportBox').value = 'const DEFAULT_HOTSPOTS = '+JSON.stringify(HOTSPOTS,null,2)+';'; }
+    $('copyAreas').addEventListener('click', async()=>{ exportAreas(); $('exportBox').select(); try{ await navigator.clipboard.writeText($('exportBox').value); alert('Código copiado.'); }catch(e){ document.execCommand('copy'); } });
   </script>
 </body>
 </html>
