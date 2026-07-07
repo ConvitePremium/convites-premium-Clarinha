@@ -108,10 +108,25 @@
     const MESSAGE = 'Olá! Confirmo minha presença no aniversário da Clarinha.';
 
     const DEFAULT_HOTSPOTS = {
-      confirm:{left:17, top:66.5, width:23, height:12.5},
-      map:{left:39, top:66.5, width:22, height:12.5},
-      gift:{left:60, top:66.5, width:25, height:12.5}
-    };
+  "confirm": {
+    "left": 23.2,
+    "top": 63.9,
+    "width": 14.7,
+    "height": 14.4
+  },
+  "map": {
+    "left": 42.8,
+    "top": 63.8,
+    "width": 15.5,
+    "height": 14
+  },
+  "gift": {
+    "left": 62.5,
+    "top": 63.6,
+    "width": 16,
+    "height": 12.8
+  }
+};
     const STORAGE_KEY = 'clarinha-hotspots-v1';
     let HOTSPOTS = JSON.parse(JSON.stringify(DEFAULT_HOTSPOTS));
     try { HOTSPOTS = {...HOTSPOTS, ...JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}; } catch(e) {}
